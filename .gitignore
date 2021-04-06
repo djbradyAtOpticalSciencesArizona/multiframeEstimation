@@ -104,5 +104,5 @@ venv.bak/
 .mypy_cache/
 
 # added by Minghao
-# only good results should be picked up and pushed
-output_weights/
+# FreeCAD backup documents
+*.FCStd1
