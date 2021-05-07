@@ -6,7 +6,8 @@
 ### By Minghao, May 06, 20121                                    ###
 ####################################################################
 
-GAPTIME=3
+GAPTIME=1
+# Gaps bettwen each operation block. Easier debug and break
 
 #############################
 ### Setting date and time ###
@@ -15,7 +16,6 @@ echo
 echo "Setting date and time..."
 echo
 sleep $GAPTIME
-# too much time jitter would block internet access
 
 TIMEZONE='America/Phoenix'
 #stop linux system's auto time sync, it does not work good
@@ -34,6 +34,9 @@ do
 done
 sudo timedatectl set-time "$DATETIME"
 timedatectl #verify time now
+sleep 3
+# Changing system time seems to temperally lock some file
+# apt options would be blocked if no waiting
 
 ####################################
 ### Upgrade and Install Packages ###
