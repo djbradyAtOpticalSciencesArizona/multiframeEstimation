@@ -177,10 +177,10 @@ echo "NEEDS REBOOT"
 echo
 sleep $GAPTIME
 
-wget -q https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.2/install.sh
+wget -q https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.3/install_full.sh
 DINSNAME=Arducam_v4l2_driver_installer.sh
-mv install.sh $DINSNAME
+mv install_full.sh $DINSNAME
 chmod +x $DINSNAME
-./$DINSNAME
+./$DINSNAME -m arducam
 
 exit 0
