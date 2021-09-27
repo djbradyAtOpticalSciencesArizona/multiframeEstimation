@@ -3,7 +3,7 @@
 ####################################################################
 ### Make essential modification and installation for Jetson Nano ###
 ### to work with Arducam 1MP Quadrascopic Camera Bundle Kit      ###
-### By Minghao, May 06, 20121                                    ###
+### By Minghao, May 06, 2021                                     ###
 ####################################################################
 
 GAPTIME=1
@@ -149,11 +149,16 @@ echo
 sleep $GAPTIME
 
 # as root so any user can use
-sudo -H pip3 install v4l2
-# manually fix the bug by alter 2 lines
-V4L2F='/usr/local/lib/python3.6/dist-packages/v4l2.py'
-sudo sed -i '197s/range(1, 9)/list(range(1, 9))/' $V4L2F
-sudo sed -i '248s/range(0, 4)/list(range(0, 4))/' $V4L2F
+sudo -H pip3 install v4l2-fix  
+############### Deprecated ##################
+### method before Arducam release a fixed ###
+### version of v4l2                       ###
+#sudo -H pip3 install v4l2
+## manually fix the bug by alter 2 lines
+#V4L2F='/usr/local/lib/python3.6/dist-packages/v4l2.py'
+#sudo sed -i '197s/range(1, 9)/list(range(1, 9))/' $V4L2F
+#sudo sed -i '248s/range(0, 4)/list(range(0, 4))/' $V4L2F
+##############################################
 # set default python version python3
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
@@ -181,6 +186,6 @@ wget -q https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.3/install_
 DINSNAME=Arducam_v4l2_driver_installer.sh
 mv install_full.sh $DINSNAME
 chmod +x $DINSNAME
-./$DINSNAME -m arducam
+bash $DINSNAME -m imx477
 
 exit 0
