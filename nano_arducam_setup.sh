@@ -186,6 +186,6 @@ wget -q https://github.com/ArduCAM/MIPI_Camera/releases/download/v0.0.3/install_
 DINSNAME=Arducam_v4l2_driver_installer.sh
 mv install_full.sh $DINSNAME
 chmod +x $DINSNAME
-bash $DINSNAME -m imx477
+bash $DINSNAME -m arducam
 
 exit 0
